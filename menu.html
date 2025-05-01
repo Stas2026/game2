@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Меню</title>
+    <style>
+        body {
+            margin: 0;
+            overflow: hidden; /* Блокуємо прокрутку на сторінці меню також, якщо потрібно */
+        }
+        #godzilla-image {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            object-fit: cover;
+            z-index: 1; /* Розміщуємо під bullvikingpin */
+        }
+        #bull-viking-pin {
+            position: fixed;
+            top: 50%; /* Розміщення по вертикалі на 50% */
+            left: 50%; /* Розміщення по горизонталі на 50% */
+            transform: translate(-50%, -50%); /* Центрування по обох осях */
+            width: 100px; /* Приблизний розмір */
+            height: auto;
+            z-index: 2; /* Розміщуємо поверх godzilla */
+            cursor: pointer; /* Вказівник при наведенні */
+        }
+        #gold-coin {
+            position: absolute;
+            width: 50px; /* Приблизний розмір */
+            height: auto;
+            opacity: 0; /* Спочатку прихований */
+            transform: scale(0); /* Початковий масштаб 0 */
+            transition: opacity 0.2s ease-in-out, transform 0.2s ease-in-out; /* Швидка поява зі збільшенням */
+        }
+        #record {
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            font-size: 20px;
+            color: white; /* Або інший колір тексту */
+            z-index: 3; /* Поверх усіх зображень */
+        }
+    </style>
+</head>
+<body>
+
+    <img id="godzilla-image" src="img/godzilla_lobby.png" alt="Годзілла Лобі">
+    <img id="bull-viking-pin" src="img/bullvikingpin.png" alt="Бик Вікінг Пін">
+    <img id="gold-coin" src="img/gold_coin.png" alt="Золота Монета">
+    <div id="record">Рекорд: <span id="record-value">0</span></div>
+
+    <script>
+        let recordValue = 0;
+        const recordDisplay = document.getElementById('record-value');
+        const bullVikingPin = document.getElementById('bull-viking-pin');
+        const goldCoin = document.getElementById('gold-coin');
+
+        bullVikingPin.addEventListener('click', function(event) {
+            recordValue++;
+            recordDisplay.textContent = recordValue;
+
+            // Показуємо монетку в місці кліку з ефектом масштабування
+            goldCoin.style.left = event.clientX + 'px';
+            goldCoin.style.top = event.clientY + 'px';
+            goldCoin.style.opacity = 1;
+            goldCoin.style.transform = 'scale(1)'; // Збільшуємо масштаб до 1
+
+            // Приховуємо монетку через деякий час
+            setTimeout(function() {
+                goldCoin.style.opacity = 0;
+                goldCoin.style.transform = 'scale(0)'; // Зменшуємо масштаб до 0
+            }, 300); // Швидше зникнення
+        });
+    </script>
+
+</body>
+</html>
