@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Завантаження</title>
+    <style>
+        body {
+            margin: 0;
+            overflow: hidden; /* Блокуємо прокрутку */
+            background-color: #000; /* Чорний фон */
+            display: flex;
+            justify-content: center; /* Центрування по горизонталі */
+            align-items: center; /* Центрування по вертикалі */
+            height: 100vh; /* Займає всю висоту вікна браузера */
+        }
+        #loading-image {
+            width: 100vw; /* Займає всю ширину вікна браузера */
+            height: 100vh; /* Займає всю висоту вікна браузера */
+            object-fit: cover; /* Масштабує зображення, зберігаючи пропорції та обрізаючи зайве */
+        }
+    </style>
+</head>
+<body>
+
+    <img id="loading-image" src="img/loading_2018_original.png" alt="Завантаження">
+
+    <script>
+        // Імітація завантаження (замініть на реальну перевірку завантаження ресурсів)
+        setTimeout(function() {
+            window.location.href = 'menu.html'; // Перехід на сторінку menu.html
+        }, 3000); // Затримка в 3 секунди (можна змінити)
+    </script>
+
+</body>
+</html>
